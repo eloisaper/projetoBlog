@@ -2,9 +2,9 @@
     require_once '../core/sql.php';
 
     $id = 1;
-    $nome = 'murilo';
-    $email = 'murilo@gmail.com';
-    $senha = '123mudar';
+    $nome = 'eloisa';
+    $email = 'eloisa@gmail.com';
+    $senha = '98245';
     $dados = ['nome' => $nome,
             'email' => $email,
             'senha' => $senha];
@@ -16,7 +16,7 @@
     echo '<br>';
     print_r($campos);
     echo '<br>';
-    print_r($criterios);
+    print_r($criterio);
     echo '<br>';
 
     //teste geracao insert 

@@ -48,10 +48,10 @@
         $instrucao .= " from {$entidade}";
 
         if(!empty($criterio)){
-            $instrucao .= 'where ';
-
+            $instrucao .= 'where '; 
+            
             foreach($criterio as $expressao){
-                $intrucao .= ' ' . implode(' ', $expressao);
+                $instrucao .= ' ' . implode(' ', $expressao);
             }
         }
 
@@ -62,7 +62,7 @@
         return $instrucao;
     }
 
-    
+
 
 
 ?>
