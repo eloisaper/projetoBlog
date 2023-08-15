@@ -10,11 +10,13 @@ function insere(string $entidade, array $dados) : bool{
     }
 
     $instrucao = insert($entidade, $coringa);
+    
     $conexao = conecta();
 
     // tem um erro aqui nas duas
     $stmt = mysqli_prepare($conexao, $instrucao);
-    eval('msqli_stmt_bind_param($stmt, \'' . implode('', $tipo) . '\',$' . implode(', $', array_keys($dados)) . ');');
+    
+    eval('mysqli_stmt_bind_param($stmt, \'' . implode('', $tipo) . '\',$' . implode(', $', array_keys($dados)) . ');');
 
     mysqli_stmt_execute($stmt);
     $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
@@ -30,7 +32,7 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool{
     $retorno = false;
 
     foreach ($dados as $campo => $dado){
-        $coringa[$campo] = '?';
+        $coringa_dados[$campo] = '?';
         $tipo[] = gettype($dado) [0];
         $$campo = $dado;
     }
@@ -53,16 +55,17 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool{
     }
 
     $instrucao = update($entidade, $coringa_dados, $coringa_criterio);
+    
     $conexao = conecta();
     $stmt = mysqli_prepare($conexao, $instrucao);
 
     if(isset($tipo)){
-        $comando = 'msqli_stmt_bind_param($stmt, ';
+        $comando = 'mysqli_stmt_bind_param($stmt, ';
         $comando .= "'" . implode('', $tipo). "'";
         $comando .= ', $' . implode(', $', array_keys($dados));
         $comando .= ', $' . implode(', $', $campos_criterio);
         $comando .= ');';
-
+        echo $comando;
         eval($comando);
     }
 
@@ -136,6 +139,7 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
     }
 
     $instrucao = select($entidade, $campos, $coringa_criterio, $ordem);
+    
     $conexao = conecta();
     $stmt = mysqli_prepare($conexao, $instrucao);
 
