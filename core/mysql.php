@@ -9,7 +9,7 @@ function insere(string $entidade, array $dados) : bool{
         $$campo = $dado;
     }
 
-    $intrucao = insert($entidade, $coringa);
+    $instrucao = insert($entidade, $coringa);
     $conexao = conecta();
 
     // tem um erro aqui nas duas
