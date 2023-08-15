@@ -16,11 +16,11 @@ function insere(string $entidade, array $dados) : bool{
     $stmt = mysqli_prepare($conexao, $instrucao);
     eval('msqli_stmt_bind_param($stmt, \'' . implode('', $tipo) . '\',$' . implode(', $', array_keys($dados)) . ');');
 
-    mysli_stmt_execute($stmt);
-    $retorno = (boolean) mysli_stmt_affected_rows($stmt);
+    mysqli_stmt_execute($stmt);
+    $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
     $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
 
-    mysli_stmt_close($stmt);
+    mysqli_stmt_close($stmt);
     desconecta($conexao);
 
     return $retorno;
@@ -151,9 +151,9 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
     mysqli_stmt_execute($stmt);
 
     if($result = mysqli_stmt_get_result($stmt)){
-        $retorno = mysqli_fetch_all($result, mysqli_assoc);
+        $retorno = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        mysli_free_result($result);
+        mysqli_free_result($result);
     }
 
     $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
