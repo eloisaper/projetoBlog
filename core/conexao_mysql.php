@@ -23,5 +23,4 @@ function desconecta($conexao){
     mysqli_close($conexao);
 }
 
-
 ?>
