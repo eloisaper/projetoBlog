@@ -1,3 +1,4 @@
+create database blog;
 use blog;
 
 create table usuario(
