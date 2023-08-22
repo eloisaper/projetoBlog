@@ -12,7 +12,7 @@ buscar_teste();
 //teste inserção banco de dados 
 function insert_teste($nota, $comentario) : void {
     $dados = ['nota' => $nota, 'comentario' => $comentario];
-    insere('avaliacao',$dados);    
+    insert('avaliacao',$dados);    
 }
 
 //teste select banco de dados
