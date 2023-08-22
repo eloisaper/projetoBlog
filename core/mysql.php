@@ -153,7 +153,6 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
     }
 
     mysqli_stmt_execute($stmt);
-    echo $stmt;
 
     if($result = mysqli_stmt_get_result($stmt)){
         $retorno = mysqli_fetch_all($result, MYSQLI_ASSOC);
