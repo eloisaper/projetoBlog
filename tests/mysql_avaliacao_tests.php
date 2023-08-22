@@ -17,7 +17,7 @@ function insert_teste($nota, $comentario) : void {
 
 //teste select banco de dados
 function buscar_teste() : void{
-    $avaliacao = buscar('avaliacao', ['id','nota','comentario'],[],'');
+    $avaliacao = buscar_teste('avaliacao', ['id','nota','comentario'],[],'');
     print_r($avaliacao);
 }
 
