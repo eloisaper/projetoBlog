@@ -5,27 +5,27 @@ require_once '../core/conexao_mysql.php';
 require_once '../core/sql.php';
 require_once '../core/mysql.php';
 
-insert_teste('Joao', 'joao@ifsp.edu.br','123456');
+Insert_teste('Joao', 'joao@ifsp.edu.br','123456');
 buscar_teste();
 update_teste(38, 'murilo', 'silva@gmail.com');
 buscar_teste();
 
 //teste inserção banco de dados 
-function insert_teste($nome, $email, $senha) : void {
-    $dados = ['nome' => $nome, 'email' => $email, 'senha' => $senha];
-    insere('usuario',$dados);    
+function insert_teste($nota, $comentario) : void {
+    $dados = ['nota' => $nota, 'comentario' => $comentario];
+    insere('avaliacao',$dados);    
 }
 
 //teste select banco de dados
 function buscar_teste() : void{
-    $usuarios = buscar('usuario', ['id','nome','email'],[],'');
-    print_r($usuarios);
+    $avaliacao = buscar('avaliacao', ['id','nota','comentario'],[],'');
+    print_r($avaliacao);
 }
 
 //teste update banco de dados
-function update_teste($id, $nome, $email) : void {
-    $dados = ['nome' => $nome, 'email' => $email];
+function update_teste($id, $nota, $comentario) : void {
+    $dados = ['nota' => $nota, 'comentario' => $comentario];
     $criterio = [['id', '=', $id]];
-    atualiza('usuario', $dados, $criterio);
+    atualiza('avaliacao', $dados, $criterio);
 }
 ?>
