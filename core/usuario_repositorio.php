@@ -37,7 +37,7 @@ switch($acao) {
         ];
 
         $criterio = [
-            ['id', '-', $id]
+            ['id', '=', $id]
         ];
     
         atualiza(
@@ -50,7 +50,7 @@ switch($acao) {
 
     case 'login':
         $criterio = [
-            ['email', '-', $email],
+            ['email', '=', $email],
             ['AND', 'ativo', '=', 1]
         ];
 
