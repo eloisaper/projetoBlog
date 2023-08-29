@@ -148,8 +148,6 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
         $comando .= "'" . implode('', $tipo). "'";
         $comando .= ', $' . implode(', $', $campos_criterio);
         $comando .= ');';
-
-        eval($comando);
     }
 
     echo $comando;
