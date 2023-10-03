@@ -50,7 +50,7 @@
                             'AND',
                             'titulo',
                             'like',
-                            "%{busca}%"
+                            "%{$busca}%"
                         ];
                     }
 
